@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+    mariadb:
+        build: ./requiements/mariadb
+        image: mariadb
+        env_file:
+            .env
+        networks:
+            - inception-network
+    adminer:
+        build: ./requiements/adminer
+        image: adminer
+        depends_on: 
+            - mariadb
+        ports:
+            - "8080:8080"
+        networks:
+            - inception-network
+    wordpress:
+        build: ./requiements/wordpress
+        image: wordpress
+        depends_on: 
+            - mariadb
+        ports:
+            - "80:80"
+        networks:
+            - inception-network
+    inginx:
+        build: ./requiements/nginx
+        image: nginx
+        depends_on: 
+            - wordpress
+        ports:
+            - "443:443"
+        networks:
+            - inception-network
+networks:
+     inception-network:
+
