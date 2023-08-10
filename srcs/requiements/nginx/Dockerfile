@@ -1,15 +1,17 @@
 FROM alpine:3.17
 
-RUN apk update && apk upgrade
-RUN apk add --no-cache nginx openssl
+RUN apk update && apk upgrade && apk add --no-cache nginx 
 
-RUN mkdir -p /etc/nginx/ssl
-RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
-    -out /etc/nginx/ssl/localhost.crt \
-    -keyout /etc/nginx/ssl/localhost.key \
-    -subj "/C=JP/ST=Tokyo/L=city/O=42tokyo/CN=yichinos.42.tokyo"
+COPY ./conf/nginx.conf /etc/nginx/http.d/default.conf
 
-RUN mkdir -p /run/nginx
-COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
+RUN apk add --no-cache openssl && \
+	mkdir -p /etc/nginx/ssl && \
+	cd /etc/nginx/ssl && \
+	openssl req -x509 \
+				-nodes \
+				-subj "/CN=JP" \
+    			-out /etc/nginx/ssl/nginx.crt \
+    			-keyout /etc/nginx/ssl/nginx.key 
+WORKDIR /var/www/html
 
 CMD ["nginx", "-g", "daemon off;"]
