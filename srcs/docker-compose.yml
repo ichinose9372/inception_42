@@ -17,24 +17,24 @@ services:
             - "8080:8080"
         networks:
             - inception-network
-    wordpress:
-        build: ./requiements/wordpress
-        image: wordpress
-        depends_on: 
-            - mariadb
-        ports:
-            - "80:80"
-        networks:
-            - inception-network
-    nginx:
-        build: ./requiements/nginx
-        image: nginx
-        depends_on: 
-            - wordpress
-        ports:
-            - "443:443"
-        networks:
-            - inception-network
+    # wordpress:
+    #     build: ./requiements/wordpress
+    #     image: wordpress
+    #     depends_on: 
+    #         - mariadb
+    #     ports:
+    #         - "80:80"
+    #     networks:
+    #         - inception-network
+    # nginx:
+    #     build: ./requiements/nginx
+    #     image: nginx
+    #     depends_on: 
+    #         - wordpress
+    #     ports:
+    #         - "443:443"
+    #     networks:
+    #         - inception-network
 networks:
      inception-network:
 

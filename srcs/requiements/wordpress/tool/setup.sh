@@ -1,7 +1,4 @@
 #!/bin/sh
-
-. ./.env
-
 #db conection
 while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$MYSQL_ROOT_PASSWORD $WP_DB_NAME -e "SELECT 1;" > /dev/null 2>&1; do
     echo "Waiting for database connection..."
