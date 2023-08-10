@@ -26,8 +26,9 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     mv wp-cli.phar /usr/local/bin/wp && \
     chmod +x /usr/local/bin/wp
 
-COPY ./tool/setup.sh /
+COPY ./tool/setup.sh /usr/local/bin/setup.sh
+RUN chmod +x /usr/local/bin/setup.sh
 
-RUN chmod +x /setup.sh
+WORKDIR = /var/www/html
 
-ENTRYPOINT ["/setup.sh"]
+ENTRYPOINT ["setup.sh"]

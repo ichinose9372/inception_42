@@ -1,8 +1,8 @@
 #!/bin/sh
 #db conection
-while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$MYSQL_ROOT_PASSWORD $WP_DB_NAME -e "SELECT 1;" > /dev/null 2>&1; do
+while ! mariadb -h ${MYSQL_HOST} -u ${WP_DB_USER} -p ${WP_DB_PASSWORD} ${WP_DB_NAME} --silent ; do
     echo "Waiting for database connection..."
-    sleep 1
+    sleep 10
 done
 
 #wordpress
@@ -33,4 +33,5 @@ wp plugin update --all --allow-root
   mv /tmp/index.html /var/www/html/wordpress
 	touch /var/www/html/$WP_FILE_ONINSTALL
 mkdir -p /var/run/php-fpm7
-exec "$@"
+
+/user/sbin/php-fpm8 --nodaemonize 

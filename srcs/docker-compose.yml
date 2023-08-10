@@ -24,6 +24,8 @@ services:
             - mariadb
         networks:
             - inception-network
+        env_file:
+            .env
     nginx:
         build: ./requiements/nginx
         image: nginx
