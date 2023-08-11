@@ -1,9 +1,8 @@
 FROM alpine:3.17
 
-RUN apk update && apk add --no-cache mysql-client \
+RUN apk update && apk add --no-cache mariadb-client \
 		wget \
 		curl \
-		php81-fpm \
 		php81 \
 		php81-fpm\
 		php81-mysqli\
@@ -15,7 +14,7 @@ RUN apk update && apk add --no-cache mysql-client \
 		php81-intl\
 		php81-opcache\
 		php81-openssl\
-		fcgi
+		fcgi 
 
 RUN adduser -S nginx && addgroup -S nginx
 COPY ./conf/php-fpm.conf /etc/php8/php-fpm.conf
@@ -29,6 +28,5 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 COPY ./tool/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh
 
-WORKDIR = /var/www/html
-
 ENTRYPOINT ["setup.sh"]
+

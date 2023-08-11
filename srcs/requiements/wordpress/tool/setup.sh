@@ -1,37 +1,32 @@
 #!/bin/sh
 #db conection
-while ! mariadb -h ${MYSQL_HOST} -u ${WP_DB_USER} -p ${WP_DB_PASSWORD} ${WP_DB_NAME} --silent ; do
-    echo "Waiting for database connection..."
-    sleep 10
-done
+while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME; do
+    echo "Waiting for mariadb ???????????????"
+    sleep 1
+done 
+
+echo "OOOOOKKKKKKK"
 
 #wordpress
-tar -xzvf /tmp/wordpress-6.2.tar.gz -C /var/www/html/ >/dev/null && chmod -R 755 /var/www/html/wordpress
-cd /var/www/html/wordpress
+mkdir -p /var/www/wordpress
+cd /var/www/wordpress
+wp core download --allow-root
+
 wp config create \
-    --dbname=$WP_DB_NAME \
+    --dbname="wordpress" \
     --dbuser=$WP_DB_USER \
     --dbpass=$WP_DB_PASSWORD \
-	--dbhost=$MYSQL_HOST \
-    --dbcharset="utf8" \
-    --dbcollate="utf8_general_ci" \
-    --allow-root
+	--dbhost=$MYSQL_HOST 
 wp core install \
-    --url=$DOMAIN_NAME \
+    --url=$WP_ADMIN_EMAIL \
     --title=$WP_TITLE \
-    --admin_user=$WP_ADMIN_USER \   
-	--admin_password=$WP_ADMIN_PASSWORD \
-    --admin_email=$WP_ADMIN_EMAIL \
-    --skip-email\
-    --allow-roo t
+    --admin_user=$WP_USER \
+    --admin_password=$WP_PASSWORD \
+    --admin_email=$WP_EMAIL 
 wp user create \
-    $WP_USER $WP_EMAIL \
-    --role=author \
+    $WP_TMP_USER \
+    $WP_TMP_EMAIL \
     --user_pass=$WP_PASSWORD \
-    --allow-root
-wp plugin update --all --allow-root
-  mv /tmp/index.html /var/www/html/wordpress
-	touch /var/www/html/$WP_FILE_ONINSTALL
-mkdir -p /var/run/php-fpm7
 
-/user/sbin/php-fpm8 --nodaemonize 
+
+/usr/sbin/php-fpm81 -R --nodaemonize
