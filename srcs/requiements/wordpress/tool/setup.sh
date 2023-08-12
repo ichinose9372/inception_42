@@ -1,11 +1,9 @@
 #!/bin/sh
 #db conection
-while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME; do
+while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent; do
     echo "Waiting for mariadb ???????????????"
-    sleep 1
+    sleep 1 
 done 
-
-echo "OOOOOKKKKKKK"
 
 #wordpress
 mkdir -p /var/www/wordpress
@@ -28,5 +26,4 @@ wp user create \
     $WP_TMP_EMAIL \
     --user_pass=$WP_PASSWORD \
 
-
-/usr/sbin/php-fpm81 -R --nodaemonize
+/usr/sbin/php-fpm81 -F
