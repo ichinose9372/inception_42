@@ -26,4 +26,4 @@ wp user create \
     $WP_TMP_EMAIL \
     --user_pass=$WP_PASSWORD \
 
-/usr/sbin/php-fpm81 -F
+/usr/sbin/php-fpm81 -R --nodaemonize
