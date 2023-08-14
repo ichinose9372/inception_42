@@ -26,6 +26,8 @@ services:
             - inception-network
         env_file:
             .env
+        ports:
+            - "80:80"
     nginx:
         build: ./requiements/nginx
         image: nginx

@@ -1,29 +1,55 @@
-FROM alpine:3.17
+FROM alpine:3.16
 
-RUN apk update && apk add --no-cache mariadb-client \
-		wget \
+RUN apk update && apk upgrade && apk add --no-cache \
+		php8 \
+		php8-fpm\
+		php8-mysqli\
+		php8-opcache\
+		php8-curl\
+		php8-mbstring\
+		php8-intl\
+		php8-xml\
+		php8-zip\
+		php8-openssl\
+		php8-phar\
+		mariadb-client \
+		fcgi \
 		curl \
-		php81 \
-		php81-fpm\
-		php81-mysqli\
-		php81-mbstring\
-		php81-xml\
-		php81-curl\
-		php81-phar\
-		php81-zip\
-		php81-intl\
-		php81-opcache\
-		php81-openssl\
-		fcgi 
+		wget 
+
+# RUN apk update && apk upgrade && apk add --no-cache \
+#   php8 \
+#   php8-fpm \
+#   php8-mysqli \
+#   php8-opcache \
+#   php8-bcmath \
+#   php8-exif \
+#   php8-gd \
+#   php8-curl \
+#   php8-json \
+#   php8-mbstring \
+#   php8-intl \
+#   php8-xml \
+#   php8-zip \
+#   php8-openssl \
+#   php8-pear \
+#   php8-phar \
+#   php8-zip \
+#   php8-zlib \
+#   mariadb-client \
+#   curl \
+#   ca-certificates \
+#   tar 
 
 RUN adduser -S nginx && addgroup -S nginx
-COPY ./conf/php-fpm.conf /etc/php81/php-fpm.conf
-COPY ./conf/www.conf /etc/php81/php-fpm.d/www.conf
+COPY ./conf/php-fpm.conf /etc/php8/php-fpm.conf
+COPY ./conf/www.conf /etc/php8/php-fpm.d/www.conf
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     chmod +x wp-cli.phar && \
     mv wp-cli.phar /usr/local/bin/wp && \
     chmod +x /usr/local/bin/wp
+
 RUN mkdir -p /var/log/php-fpm && \
 	touch /var/log/php-fpm/error.log && \
 	touch /var/log/php-fpm/access.log && \
@@ -33,5 +59,8 @@ RUN mkdir -p /var/log/php-fpm && \
 COPY ./tool/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh
 
+EXPOSE 9000
+
 ENTRYPOINT ["setup.sh"]
 
+CMD ["php-fpm8", "--nodaemonize"]

@@ -6,6 +6,7 @@ while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --si
 done 
 
 #wordpress
+mkdir -p /var/www
 mkdir -p /var/www/wordpress
 cd /var/www/wordpress
 wp core download --allow-root
@@ -26,4 +27,4 @@ wp user create \
     $WP_TMP_EMAIL \
     --user_pass=$WP_PASSWORD \
 
-/usr/sbin/php-fpm81 -R --nodaemonize
+exec "$@"
