@@ -1,8 +1,7 @@
 #!/bin/sh
 #db conection
 while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent; do
-    echo "Waiting for mariadb ???????????????"
-    sleep 1 
+	sleep 1 
 done 
 
 #wordpress
