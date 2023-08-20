@@ -17,29 +17,7 @@ RUN apk update && apk upgrade && apk add --no-cache \
 		curl \
 		wget 
 
-# RUN apk update && apk upgrade && apk add --no-cache \
-#   php8 \
-#   php8-fpm \
-#   php8-mysqli \
-#   php8-opcache \
-#   php8-bcmath \
-#   php8-exif \
-#   php8-gd \
-#   php8-curl \
-#   php8-json \
-#   php8-mbstring \
-#   php8-intl \
-#   php8-xml \
-#   php8-zip \
-#   php8-openssl \
-#   php8-pear \
-#   php8-phar \
-#   php8-zip \
-#   php8-zlib \
-#   mariadb-client \
-#   curl \
-#   ca-certificates \
-#   tar 
+
 
 RUN adduser -S nginx && addgroup -S nginx
 COPY ./conf/php-fpm.conf /etc/php8/php-fpm.conf
