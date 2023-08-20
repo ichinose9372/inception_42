@@ -26,6 +26,8 @@ services:
             - inception-network
         env_file:
             .env
+        volumes:
+          - wp:/var/www/wordpress
     nginx:
         build: ./requiements/nginx
         image: nginx
@@ -37,6 +39,17 @@ services:
             .env
         networks:
             - inception-network
+        volumes:
+          - wp:/var/www/wordpress
 networks:
      inception-network:
+
+volumes:
+  wp:
+    name: wp_volume
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: ${VOLUMES_PATH}/wordpress
 

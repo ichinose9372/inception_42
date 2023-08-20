@@ -16,7 +16,7 @@ RUN apk add openssl \
 	
 RUN mkdir -p /run/nginx
 # COPY ./conf/nginx.conf /etc/nginx/http.d/default.conf
-# WORKDIR /var/www/html
+WORKDIR /var/www/wordpress
 
 EXPOSE 80
 EXPOSE 443
