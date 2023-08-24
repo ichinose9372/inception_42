@@ -8,6 +8,7 @@ services:
             .env
         networks:
             - inception-network
+        restart: always
     adminer:
         build: ./requiements/adminer
         image: adminer
@@ -17,6 +18,7 @@ services:
             - "8080:8080"
         networks:
             - inception-network
+        restart: always
     wordpress:
         build: ./requiements/wordpress
         image: wordpress
@@ -28,6 +30,7 @@ services:
             .env
         volumes:
           - db:/var/www/html
+        restart: always
     nginx:
         build: ./requiements/nginx
         image: nginx
@@ -41,7 +44,7 @@ services:
             - inception-network
         volumes:
           - db:/var/www/html
-          
+        restart: always
 networks:
      inception-network:
 
