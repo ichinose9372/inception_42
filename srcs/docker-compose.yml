@@ -27,7 +27,7 @@ services:
         env_file:
             .env
         volumes:
-          - ./tmp:/var/www/html
+          - db:/var/www/html
     nginx:
         build: ./requiements/nginx
         image: nginx
@@ -40,7 +40,14 @@ services:
         networks:
             - inception-network
         volumes:
-          - ./tmp:/var/www/html
+          - db:/var/www/html
           
 networks:
      inception-network:
+
+volumes:
+    db:
+      driver_opts:
+        type: none
+        device: "/home/yichinos/data"
+        o: bind
