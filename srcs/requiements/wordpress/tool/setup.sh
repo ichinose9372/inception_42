@@ -1,6 +1,6 @@
 #!/bin/sh
 #db conection
-while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent; do
+while ! -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent; do
 	sleep 1 
 done 
 
