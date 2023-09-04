@@ -1,4 +1,6 @@
 all : 
+	mkdir -p /home/yichinose
+	mkdir -p /home/yichinose/data
 	docker-compose -f srcs/docker-compose.yml up --build
 
 clean :
