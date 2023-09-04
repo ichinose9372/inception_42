@@ -1,7 +1,8 @@
 all : 
-	mkdir -p /home/yichinose
-	chown -R user42 /home/yichinose 
-	mkdir -p /home/yichinose/data
+	sudo mkdir -p /home/yichinose
+	echo "user42" | sudo -S chmod 777 /home/yichinose
+	sudo mkdir -p /home/yichinose/data
+	echo "user42" | sudo -S chmod 777 /home/yichinose/data
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
