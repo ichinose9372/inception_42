@@ -1,7 +1,7 @@
 all : 
 	mkdir -p /home/yichinose
 	mkdir -p /home/yichinose/data
-	docker-compose -f srcs/docker-compose.yml up --build
+	chown -R user42 /home/yichinose 
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
