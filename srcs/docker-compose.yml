@@ -9,6 +9,8 @@ services:
         networks:
             - inception-network
         restart: always
+        volumes:
+            - db:/var/lib/mysql
     adminer:
         build: ./requiements/adminer
         image: adminer
@@ -29,7 +31,7 @@ services:
         env_file:
             .env
         volumes:
-          - db:/var/www/html
+          - wordpress:/var/www/html
         restart: always
     nginx:
         build: ./requiements/nginx
@@ -43,14 +45,19 @@ services:
         networks:
             - inception-network
         volumes:
-          - db:/var/www/html
+          - wordpress:/var/www/html
         restart: always
 networks:
      inception-network:
 
 volumes:
     db:
-      driver_opts:
-        type: none
-        device: "/home/yichinos/data"
-        o: bind
+        driver_opts:
+            type: none
+            device: "/home/yichinos/data"
+            o: bind
+    wordpress:
+        driver_opts:
+            type: none
+            device: "/home/yichinos/data"
+            o: bind

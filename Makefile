@@ -1,5 +1,6 @@
 all : 
-	@sudo mkdir -p /home/yichinos/data
+	@sudo mkdir -p /home/yichinos/data/db
+	@sudo mkdir -p /home/yichinos/data/wordpress
 	docker-compose -f srcs/docker-compose.yml up --build
 
 clean :
