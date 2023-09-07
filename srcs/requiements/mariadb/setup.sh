@@ -1,25 +1,25 @@
 #!/bin/sh
 
-# if [ ! -d "/run/mysqld" ]; then
+if [ ! -d "/run/mysqld" ]; then
 
-# 	mkdir -p /run/mysqld
-# 	chown -R mysql:mysql /run/mysqld
-# fi
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+fi
 
-# if [ ! -d /var/lib/mysql/mysql ]; then
-#     mysql_install_db --user=mysql --skip-test-db --basedir=/usr --datadir=/var/lib/mysql
+if [ ! -d /var/lib/mysql/mysql ]; then
+    mysql_install_db --user=mysql --skip-test-db --basedir=/usr --datadir=/var/lib/mysql
 
-#     mysqld -u mysql --bootstrap <<EOF
-# 		flush privileges;
-# 		create user '${WP_DB_USER}'@'%' identified by '${WP_DB_PASSWORD}';
-# 		create database ${WP_DB_NAME};
-# 		grant all on ${WP_DB_NAME}.* to '${WP_DB_USER}'@'%';
-# 		delete from mysql.user where user='';
-# 		delete from mysql.user where user='root';
-# 		flush privileges;
-# EOF
+    mysqld -u mysql --bootstrap <<EOF
+		flush privileges;
+		create user '${WP_DB_USER}'@'%' identified by '${WP_DB_PASSWORD}';
+		create database ${WP_DB_NAME};
+		grant all on ${WP_DB_NAME}.* to '${WP_DB_USER}'@'%';
+		delete from mysql.user where user='';
+		delete from mysql.user where user='root';
+		flush privileges;
+EOF
 
-# fi
+fi
 
 # # chown -R mysql:mysql /var/lib/mysql
 # # chown -R mysql /var/lib/mysql	
@@ -48,18 +48,18 @@
 #!/bin/sh
 
 # MariaDBのデータディレクトリの初期化
-mysql_install_db --user=mysql --skip-test-db --datadir=/var/lib/mysql --basedir=/usr
-
-# MariaDBを起動して設定を適用
-mysqld --user=mysql --bootstrap << EOF
-USE mysql;
-FLUSH PRIVILEGES;
-ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
-CREATE DATABASE IF NOT EXISTS $WP_DB_NAME CHARACTER SET utf8 COLLATE utf8_general_ci;
-CREATE USER '$WP_DB_USER'@'localhost' IDENTIFIED BY '$WP_DB_PASSWORD';
-GRANT ALL PRIVILEGES ON $WP_DB_NAME.* TO '$WP_DB_USER'@'localhost';
-FLUSH PRIVILEGES;
-EOF
+# mysql_install_db --user=mysql --skip-test-db --datadir=/var/lib/mysql --basedir=/usr
+# chown -R mysql:mysql /var/lib/mysql
+# # MariaDBを起動して設定を適用
+# mysqld --user=mysql --bootstrap << EOF
+# USE mysql;
+# FLUSH PRIVILEGES;
+# ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+# CREATE DATABASE IF NOT EXISTS $WP_DB_NAME CHARACTER SET utf8 COLLATE utf8_general_ci;
+# CREATE USER '$WP_DB_USER'@'localhost' IDENTIFIED BY '$WP_DB_PASSWORD';
+# GRANT ALL PRIVILEGES ON $WP_DB_NAME.* TO '$WP_DB_USER'@'localhost';
+# FLUSH PRIVILEGES;
+# EOF
 
 # MariaDBをフォアグラウンドで起動
 exec mysqld --user=mysql --console
