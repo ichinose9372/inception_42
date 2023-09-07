@@ -9,8 +9,8 @@ services:
         networks:
             - inception-network
         restart: always
-        # volumes:
-        #     - db:/var/lib/mysql
+        volumes:
+            - db:/var/lib/mysql
     adminer:
         build: ./requiements/adminer
         image: adminer
@@ -30,8 +30,8 @@ services:
             - inception-network
         env_file:
             .env
-        # volumes:
-        #   - wordpress:/var/www/html
+        volumes:
+          - wordpress:/var/www/html
         restart: always
     nginx:
         build: ./requiements/nginx
@@ -44,8 +44,8 @@ services:
             .env
         networks:
             - inception-network
-        # volumes:
-        #   - wordpress:/var/www/html
+        volumes:
+          - wordpress:/var/www/html
         restart: always
 networks:
      inception-network:
