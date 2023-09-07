@@ -9,8 +9,8 @@ services:
         networks:
             - inception-network
         restart: always
-        volumes:
-            - db:/var/lib/mysql
+        # volumes:
+        #     - db:/var/lib/mysql
     adminer:
         build: ./requiements/adminer
         image: adminer
@@ -50,12 +50,12 @@ services:
 networks:
      inception-network:
 
-volumes:
-    db:
-        driver_opts:
-            type: none
-            device: "/home/yichinos/data"
-            o: bind
+# volumes:
+#     db:
+#         driver_opts:
+#             type: none
+#             device: "/home/yichinos/data"
+#             o: bind
     # wordpress:
     #     driver_opts:
     #         type: none
