@@ -1,5 +1,8 @@
 #!/bin/sh
 
+sudo chown -R _mysql /usr/local/var/mysql
+sudo chmod -R o+rwx /usr/local/var/mysql
+
 if [ ! -d "/run/mysqld" ]; then
 
 	mkdir -p /run/mysqld
