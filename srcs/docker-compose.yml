@@ -56,8 +56,8 @@ volumes:
             type: none
             device: /home/yichinos/data
             o: bind
-    wordpress:
-        driver_opts:
-            type: none
-            device: /home/yichinos/wordpress
-            o: bind
+    # wordpress:
+    #     driver_opts:
+    #         type: none
+    #         device: /home/yichinos/wordpress
+    #         o: bind
