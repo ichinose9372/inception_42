@@ -12,11 +12,11 @@ clean :
 
 logs :
 	docker-compose -f srcs/docker-compose.yml logs 
-# nginx : 
-# 	cd srcs && docker-compose exec nginx sh
+nginx : 
+	cd srcs && docker-compose exec nginx sh
 
-# wp :
-# 	cd srcs && docker-compose exec wordpress sh
+wp :
+	cd srcs && docker-compose exec wordpress sh
 
-# db : 
-# 	cd srcs && docker-compose exec mariadb sh
+db : 
+	cd srcs && docker-compose exec mariadb sh
