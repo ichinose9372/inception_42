@@ -1,7 +1,9 @@
 all : 
-	@sudo mkdir -p /home/yichinos/data/db 
-	@sudo mkdir -p /home/yichinos/data/wordpress 
-	@sudo chmod 777 /home/yichinos/data/
+	sudo mkdir -p /home/yichinos/data/db 
+	sudo mkdir -p /home/yichinos/data/wordpress 
+	//permission setting
+	sudo chmod 777 /home/yichinos/data/db/*
+	sudo chmod 777 /home/yichinos/data/wordpress/*
 	docker-compose -f srcs/docker-compose.yml up --build -d
 
 clean :
