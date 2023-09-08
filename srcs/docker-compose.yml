@@ -21,32 +21,32 @@ services:
         networks:
             - inception-network
         restart: always
-    # wordpress:
-    #     build: ./requiements/wordpress
-    #     image: wordpress
-    #     depends_on: 
-    #         - mariadb
-    #     networks:
-    #         - inception-network
-    #     env_file:
-    #         .env
-    #     volumes:
-    #       - wordpress:/var/www/html
-    #     restart: always
-    # nginx:
-    #     build: ./requiements/nginx
-    #     image: nginx
-    #     depends_on: 
-    #         - wordpress
-    #     ports:
-    #         - "443:443"
-    #     env_file:
-    #         .env
-    #     networks:
-    #         - inception-network
-    #     volumes:
-    #       - wordpress:/var/www/html
-    #     restart: always
+    wordpress:
+        build: ./requiements/wordpress
+        image: wordpress
+        depends_on: 
+            - mariadb
+        networks:
+            - inception-network
+        env_file:
+            .env
+        volumes:
+          - wordpress:/var/www/html
+        restart: always
+    nginx:
+        build: ./requiements/nginx
+        image: nginx
+        depends_on: 
+            - wordpress
+        ports:
+            - "443:443"
+        env_file:
+            .env
+        networks:
+            - inception-network
+        volumes:
+          - wordpress:/var/www/html
+        restart: always
 networks:
      inception-network:
 
