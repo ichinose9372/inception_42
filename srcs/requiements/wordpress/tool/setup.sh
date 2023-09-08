@@ -1,5 +1,4 @@
 #!/bin/sh
-#db conection
 while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent 2>/dev/null; do
 	sleep 1 
 done 
@@ -12,9 +11,10 @@ wp config create \
 	--dbuser=$WP_DB_USER \
 	--dbpass=$WP_DB_PASSWORD \
 	--dbhost=$MYSQL_HOST 
+	--allow-root \
 wp core install \
 	--url=$WP_ADMIN_EMAIL \
-	--title=$WP_TITLE \
+	--allow-root \
 	--admin_user=$WP_USER \
 	--admin_password=$WP_PASSWORD \
 	--admin_email=$WP_EMAIL 
