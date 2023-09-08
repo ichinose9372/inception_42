@@ -54,7 +54,7 @@ volumes:
     db:
         driver_opts:
             type: none
-            device: /home/yichinos/mariadb
+            device: /home/yichinos/data/mariadb
             o: bind
     # wordpress:
     #     driver_opts:
