@@ -3,6 +3,7 @@ all :
 	sudo mkdir -p /home/yichinos/data/wordpress 
 	sudo chmod 777 /home/yichinos/data/db
 	sudo chmod 777 /home/yichinos/data/wordpress
+	sudo chown -R mysql:mysql /home/yichinos/data/db
 	docker-compose -f srcs/docker-compose.yml up --build -d
 
 clean :
