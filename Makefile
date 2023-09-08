@@ -1,6 +1,6 @@
 all : 
-	@sudo mkdir -p /home/yichinos/data/db
-	@sudo mkdir -p /home/yichinos/data/wordpress
+	@sudo mkdir -p /home/yichinos/data/db && chmod 777 /home/yichinos/data/db
+	@sudo mkdir -p /home/yichinos/data/wordpress && chmod 777 /home/yichinos/data/wordpress
 	@sudo chown -R 1000:1000 /home/yichinos/data/wordpress
 	@sudo chown -R 1000:1000 /home/yichinos/data/db
 	docker-compose -f srcs/docker-compose.yml up --build -d
