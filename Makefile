@@ -7,7 +7,8 @@ all :
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
-	docker volume rm $(docker volume ls -q)
+	docker volume rm  srcs_db_data
+	docker volume rm  srcs_wordpress_data
 # nginx : 
 # 	cd srcs && docker-compose exec nginx sh
 
