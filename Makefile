@@ -7,7 +7,7 @@ all :
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
-	docker volume rm  srcs_db_data
+	docker volume rm  srcs_db
 	docker volume rm  srcs_wordpress
 
 logs :
