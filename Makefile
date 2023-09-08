@@ -7,6 +7,7 @@ all :
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
+	docker volume rm $(docker volume ls -q)
 # nginx : 
 # 	cd srcs && docker-compose exec nginx sh
 
