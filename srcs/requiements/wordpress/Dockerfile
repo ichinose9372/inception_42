@@ -32,6 +32,9 @@ RUN	mkdir -p /var/log/php-fpm && \
 	chown -R nginx:nginx /var/log/php-fpm && \
 	chmod -R 777 /var/log/php-fpm
 
+RUN mkdir -p /var/www/html
+WORKDIR /var/www/html
+
 COPY ./tool/setup.sh /usr/local/bin/setup.sh
 RUN	chmod +x /usr/local/bin/setup.sh
 

@@ -5,9 +5,6 @@ while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --si
 done 
 
 #wordpress
-mkdir -p /var/www
-mkdir -p /var/www/html
-cd /var/www/html
 wp core download --allow-root
 
 wp config create \
