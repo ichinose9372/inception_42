@@ -11,7 +11,7 @@ wp config create \
 	--dbuser=$WP_DB_USER \
 	--dbpass=$WP_DB_PASSWORD \
 	--dbhost=$MYSQL_HOST \
-	--url="https://localhost" \
+	--url="https://localhost" 
 wp core install \
 	--title="ft_services" \
 	--admin_user=$WP_USER \
