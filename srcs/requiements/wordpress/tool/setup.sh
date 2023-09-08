@@ -16,7 +16,6 @@ wp core install \
 	--admin_user=$WP_USER \
 	--admin_password=$WP_PASSWORD \
 	--admin_email=$WP_EMAIL \
-	--url=$WP_ADMIN_EMAIL \
 	--allow-root \
 	--title="ft_services" 
 wp user create \
