@@ -47,8 +47,8 @@ services:
 #         volumes:
 #           - wordpress:/var/www/html
 #         restart: always
-# networks:
-#      inception-network:
+networks:
+     inception-network:
 
 volumes:
     db:
