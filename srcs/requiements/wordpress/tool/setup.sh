@@ -16,7 +16,6 @@ wp core install \
 	--title="ft_services" \
 	--admin_user=$WP_USER \
 	--admin_password=$WP_PASSWORD \
-	--url="https://localhost" \
 	--admin_email=$WP_ADMIN_EMAIL 
 wp user create \
 	$WP_TMP_EMAIL \
