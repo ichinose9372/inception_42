@@ -10,15 +10,12 @@ wp config create \
 	--dbname="wordpress" \
 	--dbuser=$WP_DB_USER \
 	--dbpass=$WP_DB_PASSWORD \
-	--dbhost=$MYSQL_HOST 
+	--dbhost=$MYSQL_HOST  \
+	--allow-root
 wp core install \
 	--title="ft_services" \
 	--admin_user=$WP_USER \
 	--admin_password=$WP_PASSWORD \
 	--admin_email=$WP_ADMIN_EMAIL \
 	--url=$DOMAIN_NAME 
-# wp user create \
-# 	$WP_TMP_EMAIL \
-# 	--user_pass=$WP_PASSWORD \
-
 exec "$@"
