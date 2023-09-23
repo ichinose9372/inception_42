@@ -14,10 +14,10 @@ clean :
 logs :
 	docker-compose -f srcs/docker-compose.yml logs 
 nginx : 
-	cd srcs && docker-compose exec nginx sh
+	cd srcs && docker-compose exec -it nginx sh
 
 wp :
-	cd srcs && docker-compose exec wordpress sh
+	cd srcs && docker-compose exec -it wordpress sh
 
 db : 
-	cd srcs && docker-compose exec mariadb sh
+	cd srcs && docker-compose exec -it mariadb sh
