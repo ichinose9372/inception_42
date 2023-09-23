@@ -19,9 +19,9 @@
 # exec mysqld --user=mysql --console
 
 
-echo "CREATE DATABASE IF NOT EXISTS ${WP_DB_NAME};" > db1,sql
-echo "CREATE USER IF NOT EXISTS '${WP_DB_USER}'@'%' IDENTIFIED BY '${WP_DB_PASSWORD}';" >> db1,sql
-echo "GRANT ALL PRIVILEGES ON ${WP_DB_NAME}.* TO '${WP_DB_USER}'@'%';" >> db1,sql	
-echo "FLUSH PRIVILEGES;" >> db1,sql
+echo "CREATE DATABASE IF NOT EXISTS ${WP_DB_NAME};" > db1.sql
+echo "CREATE USER IF NOT EXISTS '${WP_DB_USER}'@'%' IDENTIFIED BY '${WP_DB_PASSWORD}';" >> db1.sql
+echo "GRANT ALL PRIVILEGES ON ${WP_DB_NAME}.* TO '${WP_DB_USER}'@'%';" >> db1.sql	
+echo "FLUSH PRIVILEGES;" >> db1.sql
 
 mysql < db1.sql
