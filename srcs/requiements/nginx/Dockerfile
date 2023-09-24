@@ -7,6 +7,9 @@ COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 RUN apk add openssl && mkdir /etc/nginx/ssl \
 	&& cd /etc/nginx/ssl \
 	&& openssl req -x509 \
+			-newkey rsa:2048 \
+			-days 365 \
+			-nodes \
 			-subj "/C=JP/CN=yichinos.42.jp" \
 			-out nginx.crt \
 			-keyout nginx.key\
