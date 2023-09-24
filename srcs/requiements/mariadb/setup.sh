@@ -15,3 +15,5 @@ if [ ! -d /var/lib/mysql/mysql ]; then
 EOF
 
 fi
+
+exec mysqld -u mysql --console
