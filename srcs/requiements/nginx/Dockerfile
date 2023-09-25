@@ -5,15 +5,15 @@ RUN apk update && apk upgrade && apk add --no-cache nginx
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN apk add openssl && mkdir /etc/nginx/ssl \
-	&& cd /etc/nginx/ssl \
-	&& openssl req -x509 \
-			-newkey rsa:2048 \
-			-days 365 \
-			-nodes \
-			-subj "/C=JP/CN=yichinos.42.jp" \
-			-out nginx.crt \
-			-keyout nginx.key\
-	&& chmod +r nginx.crt nginx.key
+    && cd /etc/nginx/ssl \
+    && openssl req -x509 \
+            -newkey rsa:2048 \
+            -days 365 \
+            -nodes \
+            -subj "/C=JP/CN=yichinos.42.jp" \
+            -out nginx.crt \
+            -keyout nginx.key \
+    && chmod 644 nginx.crt nginx.key
 	
 RUN mkdir -p /run/nginx
 WORKDIR /var/www/html
