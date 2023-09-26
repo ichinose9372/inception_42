@@ -32,6 +32,7 @@ RUN mkdir -p /var/www/html
 WORKDIR /var/www/html
 
 COPY ./tool/setup.sh /usr/local/bin/setup.sh
+RUN chmod +x /usr/local/bin/setup.sh
 
 EXPOSE 9000
 
