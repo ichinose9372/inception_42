@@ -13,7 +13,7 @@ wp config create \
 	--dbhost=$MYSQL_HOST  \
 	--allow-root
 wp core install \
-	--title="ft_services" \
+	--title="yichinos is" \
 	--admin_user=$WP_USER \
 	--admin_password=$WP_PASSWORD \
 	--admin_email=$WP_ADMIN_EMAIL \
