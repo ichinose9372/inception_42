@@ -6,10 +6,6 @@ all :
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
-	docker volume rm  srcs_db
-	docker volume rm  srcs_wordpress
-	sudo rm -rf /home/yichinos/data/db
-	sudo rm -rf /home/yichinos/data/wordpress
 
 logs :
 	docker-compose -f srcs/docker-compose.yml logs 
