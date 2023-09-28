@@ -19,5 +19,7 @@ wp core install \
 	--admin_email=$WP_ADMIN_EMAIL \
 	--url=$DOMAIN_NAME 
 
+sed -i "/That's all, stop editing!/a define('RELOCATE', true);" wp-config.php
+
 # echo "define(RELOCATE, true);" >> wp-config.php
 exec "$@"
