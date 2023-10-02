@@ -9,8 +9,6 @@ if [ ! -d /var/lib/mysql/mysql ]; then
 		create user '${WP_DB_USER}'@'%' identified by '${WP_DB_PASSWORD}';
 		create database ${WP_DB_NAME};
 		grant all on ${WP_DB_NAME}.* to '${WP_DB_USER}'@'%';
-		delete from mysql.user where user='';
-		delete from mysql.user where user='root';
 		flush privileges;
 EOF
 
