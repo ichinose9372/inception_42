@@ -20,7 +20,6 @@ RUN apk update && apk upgrade && apk add --no-cache \
 
 
 RUN adduser -S nginx && addgroup -S nginx 
-USER nginx
 COPY ./conf/php-fpm.conf /etc/php8/php-fpm.conf
 COPY ./conf/www.conf /etc/php8/php-fpm.d/www.conf
 
