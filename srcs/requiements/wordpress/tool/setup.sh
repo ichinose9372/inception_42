@@ -1,7 +1,7 @@
 #!/bin/sh
-while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent 2>/dev/null; do
-	sleep 1 
-done 
+# while ! mariadb -h $MYSQL_HOST -u $WP_DB_USER -p$WP_DB_PASSWORD $WP_DB_NAME --silent 2>/dev/null; do
+# 	sleep 1 
+# done 
 
 #wordpress
 wp core download --allow-root
@@ -21,5 +21,4 @@ wp core install \
 
 sed -i "/That's all, stop editing!/a define('RELOCATE', true);" wp-config.php
 
-# echo "define(RELOCATE, true);" >> wp-config.php
 exec "$@"
