@@ -1,8 +1,14 @@
-all : 
+all : up
+
+up :
 	@sudo systemctl stop nginx
 	@sudo mkdir -p /home/yichinos/data/db 
 	@sudo mkdir -p /home/yichinos/data/wordpress 
 	docker-compose -f srcs/docker-compose.yml up --build -d
+	echo "finish"
+
+down :
+	docker-compose -f srcs/docker-compose.yml down
 
 clean :
 	docker-compose -f srcs/docker-compose.yml down
