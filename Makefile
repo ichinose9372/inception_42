@@ -5,7 +5,6 @@ up :
 	@sudo mkdir -p /home/yichinos/data/db 
 	@sudo mkdir -p /home/yichinos/data/wordpress 
 	docker-compose -f srcs/docker-compose.yml up --build -d
-	echo "finish"
 
 down :
 	docker-compose -f srcs/docker-compose.yml down
@@ -17,6 +16,8 @@ clean :
 	sudo rm -rf /home/yichinos/data/db
 	sudo rm -rf /home/yichinos/data/wordpress
 
+bonus :
+
 logs :
 	docker-compose -f srcs/docker-compose.yml logs 
 nginx : 
@@ -27,3 +28,5 @@ wp :
 
 db : 
 	cd srcs && docker-compose exec -it srcs_mariadb_1 sh
+	
+.PONEY: all up down clean bonus logs nginx wp db
