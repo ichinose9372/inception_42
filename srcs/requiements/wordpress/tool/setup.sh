@@ -16,7 +16,7 @@ wp core install \
 	--admin_email=$WP_ADMIN_EMAIL \
 	--url=$DOMAIN_NAME
 
-wp user create $WP_USER2 $WP_EMAIL --role=author --user_pass=$WP_PASSWORD2 --allow-root
+wp user create $WP_USER2 $WP_EMAIL2 --role=author --user_pass=$WP_PASSWORD2 --allow-root
 
 sed -i "/That's all, stop editing!/a define('RELOCATE', true);" wp-config.php
 

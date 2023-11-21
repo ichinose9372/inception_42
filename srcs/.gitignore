@@ -1,3 +1,4 @@
 /requiments/mariadb/data
 srcs/tmp
 tmp
+.env
