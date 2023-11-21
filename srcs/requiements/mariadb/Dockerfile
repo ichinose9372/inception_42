@@ -6,7 +6,7 @@ RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
 COPY ./conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
-COPY setup.sh /usr/local/bin/
+COPY tool/setup.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/setup.sh
 
 ENTRYPOINT ["setup.sh"]
