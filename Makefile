@@ -7,9 +7,8 @@ up:
 	docker-compose -f srcs/docker-compose.yml up --build -d
 
 down:
-	@if docker network inspect srcs_default > /dev/null 2>&1; then \
-		docker-compose -f srcs/docker-compose.yml down; \
-	fi
+	
+	docker-compose -f srcs/docker-compose.yml down;
 
 clean:
 	@if docker network inspect srcs_inception-network > /dev/null 2>&1; then \
@@ -24,7 +23,7 @@ clean:
 	sudo rm -rf /home/yichinos/data/db
 	sudo rm -rf /home/yichinos/data/wordpress
 
-bonus:
+
 
 logs:
 	docker-compose -f srcs/docker-compose.yml logs
