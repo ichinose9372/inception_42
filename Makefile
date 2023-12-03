@@ -12,9 +12,15 @@ down:
 	fi
 
 clean:
-	docker-compose -f srcs/docker-compose.yml down
-	docker volume rm srcs_db
-	docker volume rm srcs_wordpress
+	@if docker network inspect srcs_inception-network > /dev/null 2>&1; then \
+		docker-compose -f srcs/docker-compose.yml down; \
+	fi
+	@if docker volume inspect srcs_db > /dev/null 2>&1; then \
+		docker volume rm srcs_db; \
+	fi
+	@if docker volume inspect srcs_wordpress > /dev/null 2>&1; then \
+		docker volume rm srcs_wordpress; \
+	fi
 	sudo rm -rf /home/yichinos/data/db
 	sudo rm -rf /home/yichinos/data/wordpress
 
