@@ -28,5 +28,7 @@ wp :
 
 db : 
 	cd srcs && docker-compose exec -it srcs_mariadb_1 sh
+
+re : clean up
 	
 .PONEY: all up down clean bonus logs nginx wp db
